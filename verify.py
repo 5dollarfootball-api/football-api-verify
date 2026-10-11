@@ -29,9 +29,10 @@ from datetime import datetime, timedelta, timezone
 
 API = "https://api.5dollarfootballapi.com/v1"
 SITE = "https://5dollarfootballapi.com"
-METRICS = ["with_corners", "with_corner_line", "with_odds", "with_events", "with_live_stats", "with_cards"]
+METRICS = ["with_corners", "with_ht_corners", "with_corner_line", "with_odds", "with_events", "with_live_stats", "with_cards"]
 LABELS = {
     "with_corners": "corners",
+    "with_ht_corners": "ht corners",
     "with_corner_line": "corner line",
     "with_odds": "odds",
     "with_events": "events",
@@ -85,6 +86,7 @@ def classify(fx):
     return {
         # Both corner counts recorded and at least one corner taken: 0-0 counts as not tracked.
         "with_corners": h is not None and a is not None and (h + a) > 0,
+        "with_ht_corners": corners.get("half_home") is not None and corners.get("half_away") is not None,
         "with_corner_line": has_line(odds.get("corner_line")),
         # A pre-match Asian handicap line stands for the 1X2 / handicap / goal-line markets.
         "with_odds": has_line(odds.get("asian_handicap")),

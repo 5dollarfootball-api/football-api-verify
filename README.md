@@ -22,6 +22,7 @@ England Premier League (England), league id 4160026622
 
                    you counted     published
   corners                 100%          100%
+  ht corners              100%          100%
   corner line             100%          100%
   odds                    100%          100%
   events                 99.7%         99.7%
@@ -38,6 +39,7 @@ Every share is a percentage of **finished** fixtures (`status = "finished"`) wit
 | column | counted when |
 |---|---|
 | corners | `corners.home` and `corners.away` are both present and at least one corner was taken — a 0–0 corner count is treated as *not tracked* |
+| ht corners | `corners.half_home` and `corners.half_away` are both present |
 | corner line | `odds.corner_line` has an opening or closing line |
 | odds | `odds.asian_handicap` has an opening or closing line (1X2, handicap and goal-line markets arrive together) |
 | events | `events` is non-empty |
